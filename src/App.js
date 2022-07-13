@@ -1,28 +1,28 @@
 import React, { Component} from 'react';
-import NavBar from "./components/navbar";
-import {Route, Switch} from 'react-router-dom';
-import Home from "./components/home";
-import Contact from "./components/contact";
-import Projects from "./components/projects";
-import About from "./components/about";
-import ProjectsDetails from "./components/projectsDetails";
+import {Route, Switch, Redirect} from 'react-router-dom';
+import Movies from "./components/movies/movies";
+import Navbar from "./components/movies/navbar";
+import Customers from "./components/movies/customers"
+import Rentals from "./components/movies/rentals"
+import Error404 from "./components/movies/error404"
+import SingleMovle from "./components/movies/singleMovie";
 
 
 export default class App extends Component{
-  render(){
-    return (
-        <div>
-          <NavBar />
-          <div className="content">
-              <Switch>
-                  <Route path="/projects/:id" component={ProjectsDetails} />
-                  <Route path="/projects" render={props => <Projects {...props} />} />
-                  <Route path="/contact" render={()=><Contact />} />
-                  <Route path="/about" render={()=><About />} />
-                  <Route path="/" render={()=><Home />} />
-              </Switch>
+    render(){
+        return (
+            <>
+                <Navbar />
+                <Switch>
+                    <Route path="/404" component={Error404}></Route>
+                    <Route path="/movie/:id" render={(props)=><SingleMovle {...props} />}></Route>
+                    <Route path="/rentals" component={Rentals}>Rentals</Route>
+                    <Route path="/customers" component={Customers}>Customers</Route>
+                    <Route path="/" exact component={Movies}>Movies</Route>
+                    <Redirect to="/404" />
 
-          </div>
-        </div>
-    )}
+                </Switch>
+
+            </>
+        )}
 }

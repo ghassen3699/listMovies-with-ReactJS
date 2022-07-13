@@ -3,7 +3,6 @@ import {getMovies} from '../services/fakeMovieService'
 import Movie from './movie'
 import Pagination from './pagination'
 
-
 export default class Movies extends Component {
     state = {
         movies:getMovies(),
@@ -64,8 +63,7 @@ export default class Movies extends Component {
                             key={movie._id}
                             filmData={movie}
                             deleteMovie={this.deleteMovie}
-                            like={this.likeButton}
-                        />
+                            like={this.likeButton}/>
                     })}
                     </tbody>
                 </table>
