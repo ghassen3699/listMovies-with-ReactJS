@@ -6,7 +6,7 @@ import Customers from "./components/movies/customers"
 import Rentals from "./components/movies/rentals"
 import Error404 from "./components/movies/error404"
 import SingleMovle from "./components/movies/singleMovie";
-
+import Login from "./components/movies/login";
 
 export default class App extends Component{
     render(){
@@ -16,6 +16,7 @@ export default class App extends Component{
                 <Switch>
                     <Route path="/404" component={Error404}></Route>
                     <Route path="/movie/:id" render={(props)=><SingleMovle {...props} />}></Route>
+                    <Route path="/login" component={Login}></Route>
                     <Route path="/rentals" component={Rentals}>Rentals</Route>
                     <Route path="/customers" component={Customers}>Customers</Route>
                     <Route path="/" exact component={Movies}>Movies</Route>
